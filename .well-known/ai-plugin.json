@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "au_airports",
+  "name_for_human": "Airports for Australia",
+  "description_for_model": "Plugin for to find airports and calculate distances in Australia",
+  "description_for_human": "Find airports in Australia",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://DOMAIN/.well-known/openapi.yaml",
+    "has_user_authentication": false
+  },
+  "logo_url": "https://DOMAIN/.well-known/logo.png",
+  "contact_email": "drnic@mocra.com",
+  "legal_info_url": "http://mocra.com/legal-info"
+}

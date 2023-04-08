@@ -1,0 +1,129 @@
+openapi: 3.0.0
+info:
+  title: Airport Information Service
+  description: A service that returns airport names, codes, lat/long, and urls.
+  version: 1.0.0
+servers:
+  - url: https://DOMAIN
+paths:
+  /nearestAirports:
+    get:
+      summary: Find the nearest airports by latitude and longitude
+      operationId: findNearestAirports
+      parameters:
+        - in: query
+          name: lat
+          schema:
+            type: number
+            format: double
+          required: true
+          description: The latitude of the location
+        - in: query
+          name: long
+          schema:
+            type: number
+            format: double
+          required: true
+          description: The longitude of the location
+        - in: query
+          name: count
+          schema:
+            type: integer
+          required: false
+          description: The number of nearest airports to return
+      responses:
+        '200':
+          description: A list of the nearest airports
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Airport'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /searchByName:
+    get:
+      summary: Find airports with similar names based on a town/city
+      operationId: searchAirportsByName
+      parameters:
+        - in: query
+          name: cityName
+          schema:
+            type: string
+          required: true
+          description: The name of the town/city
+      responses:
+        '200':
+          description: A list of airports with similar names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Airport'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /searchByIdent:
+    get:
+      summary: Find airports with similar identifiers based on a provided code
+      operationId: searchAirportsByIdent
+      parameters:
+        - in: query
+          name: ident
+          schema:
+            type: string
+          required: true
+          description: The airport identifier or code
+      responses:
+        '200':
+          description: A list of airports with similar identifiers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Airport'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Airport:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The airport name
+        ident:
+          type: string
+          description: The airport ident code
+        lat:
+          type: number
+          format: double
+          description: The airport latitude
+        long:
+          type: number
+          format: double
+          description: The airport longitude
+        url:
+          type: string
+          format: uri
+          description: The airport URL
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A description of the error
