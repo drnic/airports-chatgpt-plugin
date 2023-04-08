@@ -63,13 +63,4 @@ Copy your ngrok domain `e92baeb18b8a.ngrok.app` into the form, and click the gre
 
 ChatGPT will validate the two manifest files. Click the green **Next** button.
 
-![setup-validate-manifests](docs/setup-validate-manifests.png)
-
 Next, click **Install for me**, then **Continue**, then **Install plugin**.
-
-## Testing the plugin
-
-Try the prompts:
-
-TODO
-
