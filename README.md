@@ -1,4 +1,4 @@
-# Sample ChatGPT plugin in Ruby
+# ChatGPT plugin in Ruby - Airport information
 
 ChatGPT plugin that returns airport information in Australia, written in Ruby/Sinatra.
 
