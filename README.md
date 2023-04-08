@@ -6,7 +6,19 @@ Airport information was downloaded from <https://ourairports.com/countries/AU/> 
 
 ## Example usage
 
-TODO
+Ask for a flight plan between some town airports.
+
+![flight-plan](docs/demo-chatgpt-flight-plan.png)
+
+![skyvector](docs/demo-flight-plan-skyvector.png)
+
+It correctly uses the town's local airport GPS coordinates, not the towns' themselves.
+
+![sthelens](docs/demo-correctly-using-airport-coords.png)
+
+You can also ask for heading and time to fly, which ChatGPT can help do the calculation.
+
+![duration](docs/demo-distance-heading.png)
 
 ## Run locally and test on ChatGPT
 

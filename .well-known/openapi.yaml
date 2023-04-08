@@ -98,6 +98,60 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /flightPlan:
+    post:
+      summary: Generate a flight plan link
+      operationId: generateFlightPlanLink
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                coordinates:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      lat:
+                        type: number
+                      long:
+                        type: number
+                    required:
+                      - lat
+                      - long
+                  example:
+                    - lat: -41.023798
+                      long: 147.416791
+                    - lat: -41.54529953
+                      long: 147.214004517
+                    - lat: -41.336700439453125
+                      long: 148.28199768066406
+              required:
+                - coordinates
+      responses:
+        200:
+          description: Flight plan link generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  flightPlanLink:
+                    type: string
+                    format: uri
+                    example: https://skyvector.com/?fpl=410128S1472500E%20413251S1471248E%20412012S1481655E
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid input provided.
 components:
   schemas:
     Airport:
